@@ -46,50 +46,45 @@ export default function WeeklyCarousel() {
 
   if (!weeklyData.length) return <p className="text-gray-500">Sem dados</p>;
   return (
-    <div className="max-w-md mx-auto bg-gradient-to-br from-[#f8f9cf] via-[#d9cbb8] to-[#b19b88] shadow-xl rounded-lg p-6">
+    <div className="max-w-md mx-auto bg-gradient-[#d9cbb8] rounded-lg p-6">
       <Slider {...settings}>
         {weeklyData.map((day, index) => (
           <div
             key={index}
-            className="p-6 bg-white/30 backdrop-blur-lg rounded-md shadow-md"
+            className="p-6 bg-white/30 backdrop-blur-lg shadow-xl rounded-md shadow-md"
           >
-            <h2 className="text-center text-xl font-semibold text-[#b19b88] mb-4">
+            <h2 className="text-center text-xl text-[#8b6f58] mb-4">
               {day.date.split("T")[0]}
             </h2>
 
-            <label className="flex items-center border-b border-white/80 pb-2">
-              <input
-                type="checkbox"
-                checked={day.hydration}
-                readOnly={true}
-                className="w-5 h-5 appearance-none border border-white rounded-full checked:bg-blue-500 checked:border-blue-500"
-              />
-              <span className="ml-3 text-lg font-medium text-white">Água</span>
-            </label>
+            <div className="flex justify-around items-center">
+              {day.hydration && (
+                <div className="flex flex-col items-center">
+                  <span className="text-4xl text-blue-500">💧</span>
+                  <span className="mt-2 text-lg font-medium text-[#8b6f58]">
+                    Água
+                  </span>
+                </div>
+              )}
 
-            <label className="flex items-center border-b border-white/80 pb-2">
-              <input
-                type="checkbox"
-                checked={day.diet}
-                readOnly={true}
-                className="w-5 h-5 appearance-none border border-white rounded-full checked:bg-green-500 checked:border-green-500"
-              />
-              <span className="ml-3 text-lg font-medium text-white">
-                Comida
-              </span>
-            </label>
+              {day.diet && (
+                <div className="flex flex-col items-center">
+                  <span className="text-4xl text-green-500">🍎</span>
+                  <span className="mt-2 text-lg font-medium text-[#8b6f58]">
+                    Comida
+                  </span>
+                </div>
+              )}
 
-            <label className="flex items-center border-b border-white/80 pb-2">
-              <input
-                type="checkbox"
-                checked={day.exercise}
-                readOnly={true}
-                className="w-5 h-5 appearance-none border border-white rounded-full checked:bg-red-500 checked:border-red-500"
-              />
-              <span className="ml-3 text-lg font-medium text-white">
-                Exercício
-              </span>
-            </label>
+              {day.exercise && (
+                <div className="flex flex-col items-center">
+                  <span className="text-4xl text-red-500">🏋️</span>
+                  <span className="mt-2 text-lg font-medium text-[#8b6f58]">
+                    Exercício
+                  </span>
+                </div>
+              )}
+            </div>
           </div>
         ))}
       </Slider>
