@@ -46,15 +46,19 @@ export default async function Home() {
   }
 
   return (
-    <main className="text-center mt-20">
-      <h1 className="text-2xl font-bold">Welcome to Fitness APP</h1>
-      <p className="text-gray-600">Manage your fitness routine :)</p>
+    <main className="flex flex-col items-center justify-center h-screen bg-gradient-to-b from-[#f8f9cf] via-[#d9cbb8] to-[#8b6f58] text-[#b19b88]">
+      <h1 className="text-2xl text-[#8b6f58] font-bold mb-4">
+        Bem-vindo ao Fitness APP
+      </h1>
+      <p className="text-lg text-[#8b6f58] mb-8">
+        Gerencie sua rotina fitness :)
+      </p>
 
       <Link
         href="/api/auth/signin"
-        className="mt-5 inline-block bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600"
+        className="mt-5 inline-block bg-[#8b6f58] text-white px-6 py-3 rounded-md shadow-lg hover:bg-[#8b6f58] transition duration-300"
       >
-        Sign in
+        Entrar
       </Link>
     </main>
   );
