@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import Slider from "react-slick";
 
-export default function WeeklyCarousel() {
+export default function WeeklyCarousel({ email }: { email: string }) {
   interface DayData {
     date: string;
     weekday: string;
@@ -18,7 +18,7 @@ export default function WeeklyCarousel() {
   // Função para buscar os dados do banco com base na data
   const fetchWeeklyData = async () => {
     try {
-      const response = await fetch(`/api/getWeek`);
+      const response = await fetch(`/api/getWeek?email=${email}`);
       const data = await response.json();
       setWeeklyData(data);
     } catch (error) {

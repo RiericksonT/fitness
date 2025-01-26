@@ -39,7 +39,7 @@ export default async function Home() {
           </p>
         </div>
         <div>
-          <WeeklyCarousel />
+          <WeeklyCarousel email={user.user.email} />
         </div>
       </div>
     );

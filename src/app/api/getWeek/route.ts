@@ -17,7 +17,7 @@ export async function GET(req: Request): Promise<NextResponse> {
     }
 
     const user = await prisma.user.findUnique({
-      where: { email: email }, // Replace "user-email" with the actual user email
+      where: { email: email },
     });
 
     const id = user?.id;
@@ -25,13 +25,13 @@ export async function GET(req: Request): Promise<NextResponse> {
     // Consulta ao banco para registros com base no e-mail
     const records = await prisma.cheklist.findMany({
       where: {
-        id, // Filtra pelo e-mail fornecido
+        userId: id, // Filtra pelo e-mail fornecido
       },
       orderBy: {
         date: "desc",
       },
     });
-
+    console.log(records);
     return NextResponse.json(records);
   } catch (error) {
     console.error(`Erro ao buscar dados: ${error}`);
